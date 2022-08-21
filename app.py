@@ -12,7 +12,7 @@ import pandas as pd
 #port = '5432'
 #username = 'postgres'
 #password = 'nikhilghase'
-c#onn = None
+#conn = None
 
 #def connect_to_db(host_name, dbname, port, username, password):
  #   try:
