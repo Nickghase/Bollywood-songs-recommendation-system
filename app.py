@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 
 #database credentials
-host_name = 'database-1.ccck6w0etvpm.us-east-1.rds.amazonaws.com'
+"""host_name = 'database-1.ccck6w0etvpm.us-east-1.rds.amazonaws.com'
 dbname = ''
 port = '5432'
 username = 'postgres'
@@ -22,11 +22,24 @@ def connect_to_db(host_name, dbname, port, username, password):
         raise e
     else:
         print('Connected!')
-        return conn
+        return conn """
 
 #establish a connection to db
 def getdata():
-    conn = connect_to_db(host_name, dbname, port, username, password)
+    # Using ELEPHANT postgress sql
+    import os
+    import psycopg2
+    import urllib.parse
+
+    urllib.parse.uses_netloc.append("postgres")
+    url = urllib.parse.urlparse("postgres://avkkqklv:IRFndtJsWdvqunEfATkCsMlyG-yLo-wE@abul.db.elephantsql.com/avkkqklv")
+
+    conn = psycopg2.connect(database=url.path[1:],
+      user=url.username,
+      password=url.password,
+      host=url.hostname,
+      port=url.port
+    )
     curr = conn.cursor()
     curr.execute("SELECT * FROM songs ")
     records = curr.fetchall()
@@ -34,6 +47,18 @@ def getdata():
        'danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness',
        'instrumentalness', 'liveness', 'valence', 'tempo', 'text_data'])
     return song_library
+    
+    
+    """
+    # using AWS
+    conn = connect_to_db(host_name, dbname, port, username, password)
+    curr = conn.cursor()
+    curr.execute("SELECT * FROM songs ")
+    records = curr.fetchall()
+    song_library = pd.DataFrame(records, columns=['artist', 'album', 'track_name', 'popularity', 'img_url',
+       'danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness',
+       'instrumentalness', 'liveness', 'valence', 'tempo', 'text_data'])
+    return song_library """
 
 
 song_library= getdata()
