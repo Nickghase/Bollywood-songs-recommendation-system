@@ -2,4 +2,4 @@ streamlit
 requests
 psycopg2
 sklearn
-urlib.parse
+urllib.parse
