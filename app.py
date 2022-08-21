@@ -6,23 +6,23 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 
-#database credentials
-"""host_name = 'database-1.ccck6w0etvpm.us-east-1.rds.amazonaws.com'
-dbname = ''
-port = '5432'
-username = 'postgres'
-password = 'nikhilghase'
-conn = None
+#database credentials for AWS
+#host_name = 'database-1.ccck6w0etvpm.us-east-1.rds.amazonaws.com'
+#dbname = ''
+#port = '5432'
+#username = 'postgres'
+#password = 'nikhilghase'
+c#onn = None
 
-def connect_to_db(host_name, dbname, port, username, password):
-    try:
-        conn = ps.connect(host=host_name, database=dbname, user=username, password=password, port=port)
+#def connect_to_db(host_name, dbname, port, username, password):
+ #   try:
+  #      conn = ps.connect(host=host_name, database=dbname, user=username, password=password, port=port)
 
-    except ps.OperationalError as e:
-        raise e
-    else:
-        print('Connected!')
-        return conn """
+   # except ps.OperationalError as e:
+    #    raise e
+    #else:
+     #   print('Connected!')
+      #  return conn 
 
 #establish a connection to db
 def getdata():
